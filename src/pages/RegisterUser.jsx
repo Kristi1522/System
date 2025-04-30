@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://system-yp01.onrender.com";
 
 export default function RegisterUser() {
   const [email, setEmail] = useState("");

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://system-yp01.onrender.com";
 
 export default function AdminPage() {
   const [users, setUsers] = useState([]);
