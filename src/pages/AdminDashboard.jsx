@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Tables from "../pages/Tables";
-
 import { Link } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -22,6 +21,7 @@ const menu = [
   { name: "Dashboard", icon: <LayoutDashboard />, path: "/" },
   { name: "Orders", icon: <FileText />, path: "/orders" },
   { name: "Reports", icon: <BarChart2 />, path: "/reports" },
+  { name: "Tables", icon: <Users />, path: "/tables" },
 ];
 
 const actions = [
@@ -198,6 +198,8 @@ export default function AdminDashboard() {
             ))}
           </div>
         )}
+
+        {selected === "Tables" && <Tables />}
       </main>
     </div>
   );
