@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "https://system-backend-0i7a.onrender.com"
+const API_URL = "https://system-backend-0i7a.onrender.com";
 
 export default function AdminDashboard() {
   const [summary, setSummary] = useState({ totalIncome: 0, totalOrders: 0, orders: [] });
@@ -11,7 +11,6 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     fetchSummary();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchSummary = async () => {
@@ -26,7 +25,7 @@ export default function AdminDashboard() {
   };
 
   const toggleExpand = (email) => {
-    setExpandedUsers(prev => ({
+    setExpandedUsers((prev) => ({
       ...prev,
       [email]: !prev[email],
     }));
@@ -41,8 +40,8 @@ export default function AdminDashboard() {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setSummary(prev => {
-        const newOrders = prev.orders.filter(order => order._id !== orderId);
+      setSummary((prev) => {
+        const newOrders = prev.orders.filter((order) => order._id !== orderId);
         return {
           ...prev,
           orders: newOrders,
@@ -67,18 +66,42 @@ export default function AdminDashboard() {
     <div className="min-h-screen p-6 bg-background text-textdark">
       <h2 className="text-4xl font-bold text-primary mb-6">📊 Admin Dashboard</h2>
       <div className="mb-8">
-        <p className="text-lg mb-2"><strong>Total Income:</strong> {summary.totalIncome}€</p>
-        <p className="text-lg"><strong>Number of Orders:</strong> {summary.totalOrders}</p>
+        <p className="text-lg mb-2">
+          <strong>Total Income:</strong> {summary.totalIncome}€
+        </p>
+        <p className="text-lg">
+          <strong>Number of Orders:</strong> {summary.totalOrders}
+        </p>
       </div>
 
       <div className="bg-white shadow-md rounded-lg p-6 mb-10">
         <h3 className="text-2xl font-semibold mb-4 text-secondary">🛠️ Menu Management</h3>
         <ul className="space-y-3">
-          <li><Link to="/add-dish" className="text-primary hover:text-highlight transition">➕ Add Dish</Link></li>
-          <li><Link to="/edit-menu" className="text-primary hover:text-highlight transition">✏️ Edit Menu</Link></li>
-          <li><Link to="/delete-dish" className="text-primary hover:text-highlight transition">❌ Delete Dish</Link></li>
-          <li><Link to="/register-user" className="text-primary hover:text-highlight transition">🧑‍💼 Register User</Link></li>
-          <li><Link to="/daily-summary" className="text-primary hover:text-highlight transition">📅 Daily Summary</Link></li>
+          <li>
+            <Link to="/add-dish" className="text-primary hover:text-highlight transition">
+              ➕ Add Dish
+            </Link>
+          </li>
+          <li>
+            <Link to="/edit-menu" className="text-primary hover:text-highlight transition">
+              ✏️ Edit Menu
+            </Link>
+          </li>
+          <li>
+            <Link to="/delete-dish" className="text-primary hover:text-highlight transition">
+              ❌ Delete Dish
+            </Link>
+          </li>
+          <li>
+            <Link to="/register-user" className="text-primary hover:text-highlight transition">
+              🧑‍💼 Register User
+            </Link>
+          </li>
+          <li>
+            <Link to="/daily-summary" className="text-primary hover:text-highlight transition">
+              📅 Daily Summary
+            </Link>
+          </li>
         </ul>
       </div>
 
