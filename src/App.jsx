@@ -13,8 +13,6 @@ import DeleteDish from './pages/DeleteDish';
 import RegisterUser from './pages/RegisterUser';
 import PrivateRoute from './components/PrivateRoute';
 import Navbar from './components/Navbar';
-import Tables from './pages/Tables';
-import AdminTables from './pages/AdminTables';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -30,6 +28,7 @@ export default function App() {
     setLoading(false);
   }, []);
 
+  // PWA install prompt
   useEffect(() => {
     const handler = (e) => {
       e.preventDefault();
@@ -63,7 +62,10 @@ export default function App() {
     <>
       <Navbar user={user} />
       <Routes>
+        {/* Route for login */}
         <Route path="/login" element={<Login setUser={setUser} />} />
+
+        {/* Root route "/" opens AdminDashboard */}
         <Route
           path="/"
           element={
@@ -72,6 +74,8 @@ export default function App() {
             </PrivateRoute>
           }
         />
+
+        {/* Routes for all users */}
         <Route
           path="/profile"
           element={
@@ -96,6 +100,8 @@ export default function App() {
             </PrivateRoute>
           }
         />
+
+        {/* Routes for admin only */}
         <Route
           path="/admin"
           element={
@@ -144,24 +150,18 @@ export default function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/tables"
-          element={
-            <PrivateRoute user={user}>
-              <Tables />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/admin-tables"
-          element={
-            <PrivateRoute user={user} allowedRoles={['admin']}>
-              <AdminTables />
-            </PrivateRoute>
-          }
-        />
       </Routes>
+      <Route path="/tables" element={<PrivateRoute user={user}><Tables /></PrivateRoute>} />
+      <Route
+  path="/admin-tables"
+  element={
+    <PrivateRoute user={user} allowedRoles={['admin']}>
+      <AdminTables />
+    </PrivateRoute>
+  }
+/>
 
+      {/* Install App button (visible only if available) */}
       {showInstallButton && (
         <button
           onClick={handleInstallClick}
