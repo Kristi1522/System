@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Tables from "../pages/Tables";
+
 import { Link } from "react-router-dom";
 import {
   LayoutDashboard,
