@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const API_URL = 'https://system-backend-0i7a.onrender.com';
+const API_URL = 'https://system-backend-0i7a.onrender.com'; // ✅ Render backend
 
 const Reservations = () => {
   const [reservations, setReservations] = useState([]);
@@ -13,6 +13,7 @@ const Reservations = () => {
   const fetchReservations = async () => {
     try {
       const token = localStorage.getItem('token');
+      console.log('GET nga:', `${API_URL}/api/reservations/my`);
       const res = await axios.get(`${API_URL}/api/reservations/my`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -37,12 +38,17 @@ const Reservations = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
+    console.log('POST tek:', `${API_URL}/api/reservations`);
 
     try {
       await axios.post(
         `${API_URL}/api/reservations`,
         { date, people, note },
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       setDate('');
