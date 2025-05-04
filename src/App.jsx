@@ -13,6 +13,7 @@ import DeleteDish from './pages/DeleteDish';
 import RegisterUser from './pages/RegisterUser';
 import PrivateRoute from './components/PrivateRoute';
 import Navbar from './components/Navbar';
+import Reservations from './pages/Reservations';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -84,6 +85,15 @@ export default function App() {
             </PrivateRoute>
           }
         />
+        <Route
+  path="/reservations"
+  element={
+    <PrivateRoute user={user}>
+      <Reservations />
+    </PrivateRoute>
+  }
+/>
+
         <Route
           path="/orders"
           element={
