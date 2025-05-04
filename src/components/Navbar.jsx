@@ -21,7 +21,6 @@ export default function Navbar({ user }) {
           {user.role === "admin" && (
             <>
               <Link className="hover:text-highlight transition" to="/admin">Admin</Link>
-              <Link className="hover:text-highlight transition"to="/reservations">Rezervimet</Link>
               <Link className="hover:text-highlight transition" to="/daily-summary">Daily Summary</Link>
             </>
           )}
