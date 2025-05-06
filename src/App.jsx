@@ -14,6 +14,7 @@ import RegisterUser from './pages/RegisterUser';
 import PrivateRoute from './components/PrivateRoute';
 import Navbar from './components/Navbar';
 import AdminCreateReservation from './pages/AdminCreateReservation';
+import AdminReservations from './pages/AdminReservations';
 export default function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -100,6 +101,14 @@ export default function App() {
             </PrivateRoute>
           }
         />
+        <Route
+  path="/admin-reservations"
+  element={
+    <PrivateRoute user={user} allowedRoles={['admin']}>
+      <AdminReservations />
+    </PrivateRoute>
+  }
+/>
 
         {/* Routes for admin only */}
         <Route
