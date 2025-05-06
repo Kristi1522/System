@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import AdminReservations from './pages/AdminReservations';
+import MyReservations from './pages/MyReservations';
 import DailySummary from './pages/DailySummary';
 import Login from './pages/login';
 import Profile from './pages/Profile';
@@ -84,6 +85,22 @@ export default function App() {
             </PrivateRoute>
           }
         />
+        <Route
+  path="/admin-reservations"
+  element={
+    <PrivateRoute user={user} allowedRoles={['admin']}>
+      <AdminReservations />
+    </PrivateRoute>
+  }
+/>
+<Route
+  path="/my-reservations"
+  element={
+    <PrivateRoute user={user} allowedRoles={['employee']}>
+      <MyReservations />
+    </PrivateRoute>
+  }
+/>
         <Route
           path="/orders"
           element={
