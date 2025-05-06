@@ -22,7 +22,6 @@ export default function Navbar({ user }) {
             <>
               <Link className="hover:text-highlight transition" to="/admin">Admin</Link>
               <Link className="hover:text-highlight transition" to="/daily-summary">Daily Summary</Link>
-              <Link clasName="hover:text-highlight transition"to="/admin-reservations">📋 Rezervimet</Link>
             </>
           )}
 
