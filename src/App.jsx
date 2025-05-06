@@ -13,7 +13,7 @@ import DeleteDish from './pages/DeleteDish';
 import RegisterUser from './pages/RegisterUser';
 import PrivateRoute from './components/PrivateRoute';
 import Navbar from './components/Navbar';
-
+import AdminCreateReservation from './pages/AdminCreateReservation';
 export default function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -102,6 +102,14 @@ export default function App() {
         />
 
         {/* Routes for admin only */}
+        <Route
+  path="/admin-create-reservation"
+  element={
+    <PrivateRoute user={user} allowedRoles={['admin']}>
+      <AdminCreateReservation />
+    </PrivateRoute>
+  }
+/>
         <Route
           path="/admin"
           element={
