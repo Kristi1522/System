@@ -32,20 +32,73 @@ export default function AdminCreateReservation() {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ padding: "2rem" }}>
-      <h3>Krijo rezervim për një përdorues</h3>
-      <select name="userId" value={form.userId} onChange={handleChange} required>
-        <option value="">Zgjidh përdoruesin</option>
-        {users.map((u) => (
-          <option key={u._id} value={u._id}>{u.email}</option>
-        ))}
-      </select><br /><br />
+    <div className="min-h-screen p-4 bg-gray-100">
+      <h2 className="text-2xl font-semibold mb-4 text-center">Shto Rezervim</h2>
 
-      <input type="date" name="date" value={form.date} onChange={handleChange} required /><br />
-      <input type="time" name="time" value={form.time} onChange={handleChange} required /><br />
-      <input type="number" name="peopleCount" min="1" value={form.peopleCount} onChange={handleChange} required /><br /><br />
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow rounded p-4 max-w-md mx-auto space-y-4"
+      >
+        <div>
+          <label className="block mb-1 font-medium">Përdoruesi</label>
+          <select
+            name="userId"
+            value={form.userId}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-300 px-3 py-2 rounded"
+          >
+            <option value="">Zgjidh përdoruesin</option>
+            {users.map((u) => (
+              <option key={u._id} value={u._id}>{u.email}</option>
+            ))}
+          </select>
+        </div>
 
-      <button type="submit">Krijo Rezervim</button>
-    </form>
+        <div>
+          <label className="block mb-1 font-medium">Data</label>
+          <input
+            type="date"
+            name="date"
+            value={form.date}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-300 px-3 py-2 rounded"
+          />
+        </div>
+
+        <div>
+          <label className="block mb-1 font-medium">Ora</label>
+          <input
+            type="time"
+            name="time"
+            value={form.time}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-300 px-3 py-2 rounded"
+          />
+        </div>
+
+        <div>
+          <label className="block mb-1 font-medium">Numri i personave</label>
+          <input
+            type="number"
+            name="peopleCount"
+            min="1"
+            value={form.peopleCount}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-300 px-3 py-2 rounded"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded w-full"
+        >
+          Krijo Rezervim
+        </button>
+      </form>
+    </div>
   );
 }
