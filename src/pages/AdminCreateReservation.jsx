@@ -94,7 +94,7 @@ export default function AdminCreateReservation() {
 
         <button
           type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded w-full"
+           className="bg-primary hover:bg-secondary text-white font-semibold py-2 px-4 rounded w-full"
         >
           Krijo Rezervim
         </button>
